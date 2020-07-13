@@ -202,3 +202,87 @@ model:{
 > 设置`directives:{appendText:{}}`,使用`v-append-text=""`
 > 自定义指令中的生命周期`bind、inserted、update、componentUpdated、unbind`
 > 与provide/inject组合使用可以优雅地获取跨级组件实例
+
+## template和JSX
+* 区别：
+  * template语法简单、学习成本低、内置指令简易开发、组件作用域css，但不灵活
+  * JSX灵活，偏向逻辑
+* JSX和template都将编译成createElement(el,options)
+* JSX使用：
+  ```javascript
+  render:function(level){
+    let Tag = `h${level}`
+    return <Tag>Hello world</Tag>
+  }
+  ```
+
+## Vuex
+### 运行机制
+
+  ![vuex](https://vuex.vuejs.org/vuex.png "vuex运行机制")
+
+> Mustation是s为了在Devtools中跟踪数据的变化，它是同步的。如果需要进行异步操作需要放到Actions中在通过commit()进行操作
+> 如果没有异步操作，可以从组件直接进行commit()到Mutations中
+> 组件到Actions中是通过dispatch()进行操作的
+### Vue核心及原理
+* State
+  > 通过`this.$store.state.xxx`取值
+  > 原理：提供一个响应式数据
+* Mutation
+  > 通过`this.$store.commit('xxxx')`赋值
+  > 原理：更改state
+* Action
+  > 通过`this.$store.dispatch('xxx')`赋值
+  > 原理：触发Mutation
+* Getter
+  > 通过`this.$store.getter.xxx`取值
+  > 原理：借助Vue组件的computed属性来实现缓存
+* Module
+  > 模块化
+  > 原理：通过Vue.set动态添加state数据到响应式中
+* 简单实现vuex：
+  ```javascript
+  <!-- min-vuex.js -->
+  import Vue from 'vue'
+  const Store = function Store(options={}){
+    const {state={},mutations={}} = options
+    this._vm = new Vue({
+      data:{
+        $$state:state
+      }
+    })
+    this._mutations = mutations
+  }
+
+  Store.prototype.commit = function(type,payload){
+    if (this._mutations[type]) {
+      this._mutations[type](this.state,payload)
+    }
+  }
+
+  // 代理state
+  Object.defineProperties(Store.prototype,{
+    state:{
+      get:function(){
+        return this._vm.data.$$state
+      }
+    }
+  })
+
+  export default {Store}
+
+
+  <!-- main.js中使用 -->
+  import Vuex from './min-vuex.js'
+  const store = new Vuex.Store({
+    state:{
+      count:1
+    },
+    mutations:{
+      increment(state){
+        state.count++
+      }
+    }
+  })
+  Vue.prototype.$store = store
+  ```
