@@ -224,7 +224,7 @@ model:{
 > Mustation是s为了在Devtools中跟踪数据的变化，它是同步的。如果需要进行异步操作需要放到Actions中在通过commit()进行操作
 > 如果没有异步操作，可以从组件直接进行commit()到Mutations中
 > 组件到Actions中是通过dispatch()进行操作的
-### Vue核心及原理
+### Vuex核心及原理
 * State
   > 通过`this.$store.state.xxx`取值
   > 原理：提供一个响应式数据
@@ -286,3 +286,22 @@ model:{
   })
   Vue.prototype.$store = store
   ```
+## Nuxt
+* SPA单页不利于SEO、首屏渲染时间长
+* 服务器端渲染SSR解决SEO优化问题、更快的内容到达时间、配置繁琐
+* 预渲染解决首屏渲染时间长的问题
+* Nuxt:静态站点、动态渲染、简化配置
+
+## 导航解析流程
+* 触发导航
+* 在即将离开的组件中调用 beforeRouteLeave()
+* 调用全局前置守卫 beforeEach()
+* 调用 beforeRouteUpdate() (路由变化且组件复用)
+* 调用路由独享守卫 beforeEnter()
+* 解析异步路由组件
+* 在被激活的组件中调用 beforeRouteEnter()
+* 调用全局的解析守卫 beforeResolve()
+* 导航被确认
+* 调用全局的后置守卫 afterEach()
+* DOM更新
+* 用创建好的实例调用传递给beforeRouteEnter中next的回调函数

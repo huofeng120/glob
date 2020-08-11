@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{a}}</p>
+    <p>{{b.c}}</p>
+  </div>
+  <script src="./compile.js"></script>
+  <script src="./kvue.js"></script>
+  <script>
+    const vm = new Kvue({
+      el: "#app",
+      data: {
+        a: '年后',
+        b: {
+          c: 'aaa'
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

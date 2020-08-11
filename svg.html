@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background: #fff;
+    }
+    
+    .to-animate {
+      /* width: 50px;
+      height: 50px;
+      background: green;
+      position: absolute;
+      top: -25px;
+      left: -25px;
+      border-radius: 25px;
+      opacity: 1; */
+      width: 50px;
+      height: 50px;
+      background: green;
+      border-radius: 25px;
+      offset-path: path("m 227.6035,38.929859 c -17.098,-6.615379 -35.43714,-5.654746 -53.72008,-5.654746 -28.88045,0 -78.608562,23.436783 -69.27063,60.788513 8.30718,33.228734 73.51169,-17.343534 73.51169,25.446354 0,111.52514 -170.5191138,45.29238 -156.919185,154.09181 2.924851,23.39881 26.328181,58.41063 40.996904,76.33907 58.597841,71.61958 74.550601,-43.6165 130.059141,-32.51479 51.57633,10.31527 43.90688,155.47922 168.22868,115.92228 167.51141,-53.29909 -59.7547,-112.77835 8.48212,-169.64236 48.39108,-40.32591 95.07686,92.99483 193.67503,8.48212 36.29006,-31.10577 60.13025,-119.23372 -1.41369,-145.6097 C 531.50007,113.83552 494.02863,119.47348 466.5165,101.13206 447.3794,88.373995 454.4009,55.952532 431.17434,45.99829 381.32712,24.635198 348.07325,65.928309 303.94257,71.444645 274.33127,75.146057 256.00673,42.987462 227.6035,38.929859 z");
+      animation: move 3s linear infinite;
+    }
+    
+    @keyframes move {
+      /* 之前语法 */
+      100% {
+        motion-offset: 100%;
+      }
+      /* 当前规范语法 */
+      100% {
+        offset-distance: 100%;
+      }
+    }
+    
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 640px;
+      height: 480px;
+      display: #fff;
+    }
+    
+    path {
+      fill: none;
+      stroke: red;
+    }
+    
+    #svg {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="to-animate"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" id="svg">
+        <g id="shape2419-93" v:mID="2419" v:groupContext="shape" v:layerMember="1"
+				>
+          <path d="m 227.6035,38.929859 c -17.098,-6.615379 -35.43714,-5.654746 -53.72008,-5.654746 -28.88045,0 -78.608562,23.436783 -69.27063,60.788513 8.30718,33.228734 73.51169,-17.343534 73.51169,25.446354 0,111.52514 -170.5191138,45.29238 -156.919185,154.09181 2.924851,23.39881 26.328181,58.41063 40.996904,76.33907 58.597841,71.61958 74.550601,-43.6165 130.059141,-32.51479 51.57633,10.31527 43.90688,155.47922 168.22868,115.92228 167.51141,-53.29909 -59.7547,-112.77835 8.48212,-169.64236 48.39108,-40.32591 95.07686,92.99483 193.67503,8.48212 36.29006,-31.10577 60.13025,-119.23372 -1.41369,-145.6097 C 531.50007,113.83552 494.02863,119.47348 466.5165,101.13206 447.3794,88.373995 454.4009,55.952532 431.17434,45.99829 381.32712,24.635198 348.07325,65.928309 303.94257,71.444645 274.33127,75.146057 256.00673,42.987462 227.6035,38.929859 z"
+        />
+        </g>
+    </svg>
+  <script>
+    // var start = performance.now();
+    // console.log(performance)
+    // var box = document.querySelector('.to-animate');
+    // var path = document.querySelector('path');
+    // var len = path.getTotalLength();
+    // console.log(len)
+
+    // function frame() {
+    //   var now = performance.now();
+    //   var phase = ((now - start) / 6000) % 1;
+    //   var point = path.getPointAtLength(len * phase);
+    //   let x = point.x + 30 * 2
+    //   let y = point.y + 40 * 2
+    //   box.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)'; // IE
+    //   // box.style.WebkitTransform = 'translate3d(' + point.x + 'px,' + point.y + 'px,0)'; // Chrome&Safari  
+    //   requestAnimationFrame(frame);
+    // }
+
+    // frame();
+  </script>
+</body>
+
+</html>
